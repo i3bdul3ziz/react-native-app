@@ -12,9 +12,9 @@ export const reducerHandler = (state = initialState, action) =>
     { 
         case "THEME":
             return {
-                ...state.theme,
+                ...state,
                 theme: action.theme
-            };  
+            };
         default:
             return state;
     }  

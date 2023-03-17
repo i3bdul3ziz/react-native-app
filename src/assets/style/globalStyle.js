@@ -6,7 +6,7 @@ const globalStyle = StyleSheet.create({
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'top',
+        justifyContent: 'flex-start',
     },
     textCenter:
     {

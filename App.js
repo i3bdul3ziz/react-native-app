@@ -56,7 +56,7 @@ export function App()
                       ),
                 }
             }>
-                <Stack.Screen name="Home" component={HomeController} options={{ title: 'Home'}}/>
+                <Stack.Screen name="Home" component={HomeController} options={{title: 'Home'}}/>
                 <Stack.Screen name="Details" component={DetailsController} options={{ title: 'Details'}}/>
             </Stack.Navigator>
         </NavigationContainer>

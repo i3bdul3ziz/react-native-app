@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { FlatList, StyleSheet, SafeAreaView, RefreshControl} from "react-native";
 import { Motion } from "@legendapp/motion";
-import Card from '../../view/component/card/card';
 
 import foodModel from "../../model/food";
+
+import Card from '../../view/component/card/card';
 
 import globalStyle from "../../assets/style/globalStyle";
 
@@ -18,11 +19,11 @@ const HomeController = ({ navigation }) =>
     function getAll()
     {
         setLoading(true);
-        
+        setList([]);
+
         foodModel.getAll()
         .then(data =>
         {
-            console.log(data)
             setList(data);
             setLoading(false);
         })
@@ -43,12 +44,23 @@ const HomeController = ({ navigation }) =>
             <SafeAreaView style={{...style.container}}>
                 {loading
                 ?
-                    <Motion.Text transition={globalStyle.animationTransition} animate={{color: globalStyle.themes[theme].colors.textColorPrimary}}>loading...</Motion.Text>
+                    <Motion.Text transition={globalStyle.animationTransition} animate={{color: globalStyle.themes[theme].colors.textColorPrimary}} style={{fontSize: globalStyle.Sizes.sm}}>Loading...</Motion.Text>
                 :
                     list?.length > 0 &&
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             showsHorizontalScrollIndicator={false}
+                            decelerationRate={'fast'}
+                            bounces={true}
+                            refreshControl={
+                                <RefreshControl
+                                    style={{flex: 1}}
+                                    colors={['#000']}
+                                    tintColor={['#000']}
+                                    refreshing={loading}
+                                    onRefresh={getAll}
+                                />
+                            }
                             numColumns={2}
                             data={list}
                             renderItem={({item}) => <Card navigation={navigation} item={item}/>}

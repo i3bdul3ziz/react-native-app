@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet } from "react-native";
+import { Image } from "react-native";
 import { useSelector } from 'react-redux';
 import { Motion } from "@legendapp/motion";
 
@@ -17,9 +17,9 @@ const Card = ({ navigation, item }) =>
                 whileTap={{ scale: 1.05}}
                 transition={globalStyle.animationTransition}
             >
-                <Image source={{uri: item?.img_url}} style={globalStyle.imageStyle}/>
+                <Image src={`${item?.img_url}?lock=${item.id}`} style={globalStyle.imageStyle}/>
                 <Motion.Text transition={globalStyle.animationTransition} animate={{color: globalStyle.themes[theme].colors.textColorPrimary}} style={[globalStyle.textLeft, {fontSize: globalStyle.Sizes.md, paddingVertical: globalStyle.Sizes.xxs}]}>{item.title}</Motion.Text>
-                <Motion.Text transition={globalStyle.animationTransition} animate={{color: globalStyle.themes[theme].colors.textColorSecondary}} style={[globalStyle.textLeft, {fontSize: globalStyle.Sizes.xs}]}>{item.discerption_short}</Motion.Text>
+                <Motion.Text transition={globalStyle.animationTransition} animate={{color: globalStyle.themes[theme].colors.textColorSecondary}} style={[globalStyle.textLeft, {fontSize: globalStyle.Sizes.xs}]}>{item.description_short}</Motion.Text>
             </Motion.View>
         </Motion.Pressable>
     )
