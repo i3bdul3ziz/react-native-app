@@ -1,7 +1,7 @@
-export const firstClickedItemAction = (item) =>
+export const themeAction = (theme) =>
 {
     return {
-        type: 'FIRST_CLICKED_ITEM',
-        clickedItem: item
+        type: 'THEME',
+        theme: theme
     };
 };

@@ -1,21 +1,19 @@
 
+import {Appearance} from 'react-native';
+
 const initialState = 
 {
-    item: 
-    {
-        name: 'Aziz',
-        date: 'Yesterday'
-    },
+    theme: Appearance.getColorScheme(),
 };
 
-export const setFirstClickedItem = (state = initialState, action) => 
+export const reducerHandler = (state = initialState, action) => 
 {
     switch (action.type) 
-    {
-        case "FIRST_CLICKED_ITEM":
+    { 
+        case "THEME":
             return {
-                ...state,
-                clickedItem: action.clickedItem
+                ...state.theme,
+                theme: action.theme
             };  
         default:
             return state;
